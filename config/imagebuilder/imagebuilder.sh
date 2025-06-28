@@ -129,7 +129,16 @@ custom_packages() {
 
     # Download other luci-app-xxx
     # ......
+    # Download luci-app-passwall and dependencies
+    passwall_repo="https://github.com/xiaorouji/openwrt-passwall"
+    passwall_api="https://api.github.com/repos/xiaorouji/openwrt-passwall/releases"
+    passwall_pkg="luci-app-passwall"
 
+    passwall_down_url="$(curl -s ${passwall_api} | grep "browser_download_url" | grep -Eo "https://[^ ]+${passwall_pkg}[^ ]+\.ipk" | head -n1)"
+    curl -fsSOJL "${passwall_down_url}"
+    [[ $? -eq 0 ]] || error_msg "[ ${passwall_pkg} ] download failed!"
+    echo -e "${INFO} [ ${passwall_pkg} ] is downloaded successfully."
+    
     sync && sleep 3
     echo -e "${INFO} [ packages ] directory status: $(ls -al 2>/dev/null)"
 }
@@ -191,6 +200,8 @@ rebuild_firmware() {
         luci-proto-ncm luci-proto-openconnect luci-proto-ppp luci-proto-qmi luci-proto-relay \
         \
         luci-app-amlogic luci-i18n-amlogic-zh-cn \
+        luci-app-passwall luci-i18n-passwall-zh-cn \
+        passwall2 xray-core v2ray-core pdnsd-alt tcping shadowsocks-libev-ss-redir shadowsocks-libev-ss-rules \
         \
         ${config_list} \
         "
