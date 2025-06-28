@@ -201,8 +201,13 @@ rebuild_firmware() {
         \
         luci-app-amlogic luci-i18n-amlogic-zh-cn \
         luci-app-passwall luci-i18n-passwall-zh-cn \
-        passwall2 xray-core v2ray-core pdnsd-alt tcping shadowsocks-libev-ss-redir shadowsocks-libev-ss-rules \
-        \
+        chinadns-ng dns2socks geoview hysteria ipt2socks microsocks naiveproxy \
+        pdnsd-alt shadowsocks-libev-ss-rules shadowsocks-libev-ss-redir \
+        shadowsocksr-libev-ssr-local shadowsocksr-libev-ssr-redir shadowsocksr-libev-ssr-server \
+        shadowsocks-rust-sslocal shadowsocks-rust-ssserver \
+        shadow-tls simple-obfs sing-box tcping trojan-plus tuic-client \
+        v2ray-geoip v2ray-geosite v2ray-plugin xray-core xray-plugin \
+        -dnsmasq" \
         ${config_list} \
         "
 
