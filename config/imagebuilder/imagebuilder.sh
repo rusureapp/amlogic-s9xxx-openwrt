@@ -207,7 +207,8 @@ rebuild_firmware() {
         shadowsocks-rust-sslocal shadowsocks-rust-ssserver \
         shadow-tls simple-obfs sing-box tcping trojan-plus tuic-client \
         v2ray-geoip v2ray-geosite v2ray-plugin xray-core xray-plugin \
-        -dnsmasq" \
+        -dnsmasq \
+        \
         ${config_list} \
         "
 
