@@ -127,33 +127,18 @@ custom_packages() {
     [[ "${?}" -eq "0" ]] || error_msg "[ ${amlogic_i18n} ] download failed!"
     echo -e "${INFO} The [ ${amlogic_i18n} ] is downloaded successfully."
 
-    # Download other luci-app-xxx
-    # ......
-    # Download luci-app-passwall and dependencies
-    #passwall_repo="https://github.com/xiaorouji/openwrt-passwall"
-    #passwall_api="https://api.github.com/repos/xiaorouji/openwrt-passwall/releases"
-    #passwall_pkg="luci-app-passwall"
 
-    #passwall_down_url="$(curl -s ${passwall_api} | grep "browser_download_url" | grep -Eo "https://[^ ]+${passwall_pkg}[^ ]+\.ipk" | head -n1)"
-    #curl -fsSOJL "${passwall_down_url}"
-    #[[ $? -eq 0 ]] || error_msg "[ ${passwall_pkg} ] download failed!"
-    #echo -e "${INFO} [ ${passwall_pkg} ] is downloaded successfully."
-
-     # 这里开始下载 luci-app-passwall 和依赖 zip 包
+    # 这里开始下载 luci-app-passwall 和依赖 zip 包
     echo -e "${INFO} Downloading luci-app-passwall and dependencies..."
     # 下载主程序和中文语言包
     wget -c https://github.com/xiaorouji/openwrt-passwall/releases/download/25.6.28-1/luci-24.10_luci-app-passwall_25.6.28-r1_all.ipk
     wget -c https://github.com/xiaorouji/openwrt-passwall/releases/download/25.6.28-1/luci-24.10_luci-i18n-passwall-zh-cn_25.178.46475.0bf5f7f_all.ipk
-
     # 下载依赖 zip 并解压
     wget -c https://github.com/xiaorouji/openwrt-passwall/releases/download/25.6.28-1/passwall_packages_ipk_aarch64_generic.zip
     unzip -o passwall_packages_ipk_aarch64_generic.zip
-
+    
     echo -e "${INFO} luci-app-passwall and dependencies downloaded and extracted."
 
-
-
-    
     sync && sleep 3
     echo -e "${INFO} [ packages ] directory status: $(ls -al 2>/dev/null)"
 }
