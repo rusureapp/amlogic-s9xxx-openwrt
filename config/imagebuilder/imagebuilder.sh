@@ -219,6 +219,18 @@ rebuild_firmware() {
     sync && sleep 3
     echo -e "${INFO} [ ${openwrt_dir}/bin/targets/*/* ] directory status: $(ls bin/targets/*/* -al 2>/dev/null)"
     echo -e "${SUCCESS} The rebuild is successful, the current path: [ ${PWD} ]"
+      # 自动收集 sysupgrade 升级固件
+    echo -e "${STEPS} Collecting sysupgrade firmware for online upgrade..."
+
+    SYSUPGRADE_DIR="${make_path}/output/sysupgrade"
+    [[ -d "${SYSUPGRADE_DIR}" ]] || mkdir -p "${SYSUPGRADE_DIR}"
+
+    find bin/targets/ -type f -name "*sysupgrade*.img.gz" | while read -r upgrade_file; do
+        cp "$upgrade_file" "${SYSUPGRADE_DIR}/"
+        echo -e "${INFO} Copied: $(basename "$upgrade_file") → ${SYSUPGRADE_DIR}/"
+    done
+
+    echo -e "${SUCCESS} All sysupgrade firmware saved in: [ ${SYSUPGRADE_DIR} ]"
 }
 
 # Show welcome message
