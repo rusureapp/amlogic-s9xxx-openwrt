@@ -207,6 +207,7 @@ rebuild_firmware() {
         shadow-tls simple-obfs sing-box tcping trojan-plus tuic-client \
         v2ray-geoip v2ray-geosite v2ray-plugin xray-core xray-plugin \
         -dnsmasq \
+        samba4-server luci-app-samba4 \
         ${config_list} \
         "
 
