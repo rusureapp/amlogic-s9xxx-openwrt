@@ -129,7 +129,18 @@ custom_packages() {
 
     # Download other luci-app-xxx
     # ......
+    # 这里开始下载 luci-app-passwall 和依赖 zip 包
+    echo -e "${INFO} Downloading luci-app-passwall and dependencies..."
+    # 下载主程序和中文语言包
+    wget -c https://github.com/xiaorouji/openwrt-passwall/releases/download/25.6.28-1/luci-24.10_luci-app-passwall_25.6.28-r1_all.ipk
+    wget -c https://github.com/xiaorouji/openwrt-passwall/releases/download/25.6.28-1/luci-24.10_luci-i18n-passwall-zh-cn_25.178.46475.0bf5f7f_all.ipk
+    # 下载依赖 zip 并解压
+    wget -c https://github.com/xiaorouji/openwrt-passwall/releases/download/25.6.28-1/passwall_packages_ipk_aarch64_generic.zip
+    unzip -o passwall_packages_ipk_aarch64_generic.zip
+    
+    echo -e "${INFO} luci-app-passwall and dependencies downloaded and extracted."
 
+    
     sync && sleep 3
     echo -e "${INFO} [ packages ] directory status: $(ls -al 2>/dev/null)"
 }
@@ -191,7 +202,15 @@ rebuild_firmware() {
         luci-proto-ncm luci-proto-openconnect luci-proto-ppp luci-proto-qmi luci-proto-relay \
         \
         luci-app-amlogic luci-i18n-amlogic-zh-cn \
-        \
+        luci-app-passwall luci-i18n-passwall-zh-cn \
+        chinadns-ng dns2socks geoview hysteria ipt2socks microsocks naiveproxy \
+        shadowsocksr-libev-ssr-local shadowsocksr-libev-ssr-redir shadowsocksr-libev-ssr-server \
+        shadowsocks-rust-sslocal shadowsocks-rust-ssserver \
+        shadow-tls simple-obfs sing-box tcping trojan-plus tuic-client \
+        v2ray-geoip v2ray-geosite v2ray-plugin xray-core xray-plugin \
+        -dnsmasq \
+        samba4-server luci-app-samba4 \
+        kmod-nft-socket kmod-nft-tproxy \
         ${config_list} \
         "
 
