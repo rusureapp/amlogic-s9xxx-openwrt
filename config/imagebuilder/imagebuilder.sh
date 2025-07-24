@@ -139,13 +139,6 @@ custom_packages() {
     unzip -o passwall_packages_ipk_aarch64_generic.zip
     
     echo -e "${INFO} luci-app-passwall and dependencies downloaded and extracted."
-
-    # 这里开始下载 luci-theme-argon 主题和中文语言包
-    echo -e "${INFO} Downloading luci-theme-argon and i18n package..."
-
-    # 下载主题和中文语言包（版本可能更新，请根据需要替换）
-    wget -c https://downloads.immortalwrt.org/releases/24.10.2/packages/aarch64_generic/luci/luci-theme-argon_2.4.2-r20250617_all.ipk
-    wget -c https://downloads.immortalwrt.org/releases/24.10.2/packages/aarch64_generic/luci/luci-i18n-theme-argon-zh-cn_git-24.204.74244-10b01cb_all.ipk
     
     sync && sleep 3
     echo -e "${INFO} [ packages ] directory status: $(ls -al 2>/dev/null)"
@@ -217,7 +210,7 @@ rebuild_firmware() {
         -dnsmasq \
         samba4-server luci-app-samba4 \
         kmod-nft-socket kmod-nft-tproxy \
-        luci-theme-argon luci-i18n-theme-argon-zh-cn \
+        \
         ${config_list} \
         "
 
