@@ -146,10 +146,6 @@ custom_packages() {
     # 下载主题和中文语言包（版本可能更新，请根据需要替换）
     wget -c https://downloads.immortalwrt.org/releases/24.10.2/packages/aarch64_generic/luci/luci-theme-argon_2.4.2-r20250617_all.ipk
     wget -c https://downloads.immortalwrt.org/releases/24.10.2/packages/aarch64_generic/luci/luci-i18n-theme-argon-zh-cn_git-24.204.74244-10b01cb_all.ipk
-
-    # 可选：移动到 package 文件夹（根据 imagebuilder.sh 的用法）
-    mkdir -p package
-    mv luci-theme-argon_*.ipk luci-i18n-theme-argon-zh-cn_*.ipk package/
     
     sync && sleep 3
     echo -e "${INFO} [ packages ] directory status: $(ls -al 2>/dev/null)"
