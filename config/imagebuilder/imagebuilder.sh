@@ -137,7 +137,7 @@ custom_packages() {
     # 下载依赖 zip 并解压
     wget -c https://github.com/xiaorouji/openwrt-passwall/releases/download/25.6.28-1/passwall_packages_ipk_aarch64_generic.zip
     unzip -o passwall_packages_ipk_aarch64_generic.zip
-    
+    wget -c https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-theme-argon-2.4.3-r20250722.apk
     echo -e "${INFO} luci-app-passwall and dependencies downloaded and extracted."
     
     sync && sleep 3
@@ -210,6 +210,7 @@ rebuild_firmware() {
         -dnsmasq \
         samba4-server luci-app-samba4 \
         kmod-nft-socket kmod-nft-tproxy \
+        luci-theme-argon luci-i18n-theme-argon-zh-cn \
         \
         ${config_list} \
         "
