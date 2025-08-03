@@ -210,7 +210,6 @@ rebuild_firmware() {
         -dnsmasq \
         samba4-server luci-app-samba4 \
         kmod-nft-socket kmod-nft-tproxy \
-        luci-theme-argon  \
         \
         ${config_list} \
         "
