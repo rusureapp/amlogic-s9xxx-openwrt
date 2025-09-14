@@ -27,7 +27,7 @@ on:
       openwrt_board:
         description: "Select device board"
         required: false
-        default: "a311d-oes"
+        default: "smart-am40"
         type: choice
         options:
           - all
